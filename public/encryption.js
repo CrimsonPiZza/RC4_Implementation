@@ -1,8 +1,5 @@
 // Import Modules
 
-// Initialization
-const plainText = "Kill Him Kyle"
-const secretKey = "password"
 
 function encryption(plainText,secretKey){
     console.log(`\n==> Encrypting : [ ${plainText} ]`)
@@ -10,19 +7,26 @@ function encryption(plainText,secretKey){
 
     // Generate Key Stream
     const Key_Stream = PRG(KSA(secretKey),plainText.length)
+    console.log("Encryption KSA : " + KSA(secretKey))
+    console.log("Encrypt Key Stream Decimal : " + Key_Stream)
 
     // Process the Plain Text
     let processed_PlainText = []
     _.range(plainText.length).forEach( i => {
         processed_PlainText = [plainText.charCodeAt(i),...processed_PlainText]
     })
+    console.log("Encrypt PlainText Decimal : " + processed_PlainText)
 
     // XOR PlainteText & KeyStream
     let cipherText = []
-    _.range(plainText.length).forEach( i => {
+    _.range(processed_PlainText.length).forEach( i => {
+        console.log("for i = " + i)
+        console.log("KS : " + Key_Stream[i] + " XOR " + "PPT : " + processed_PlainText[i])
         let code = processed_PlainText[i] ^ Key_Stream[i]
+        console.log("Turn " + i + ", Code = " + code)
         cipherText = [code,...cipherText]
     })
+    console.log("Encrypt : " + cipherText)
 
 
     // Convert cipher to Hexa-Decimal
