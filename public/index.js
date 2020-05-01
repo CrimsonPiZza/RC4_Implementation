@@ -18,7 +18,7 @@ document.getElementById("encryptBtn").addEventListener("click",() => {
             keyLog.innerText = `# Using Key [ ${secretKey} ]`
             outputCipher.innerText = cipherHex
         }catch(err){
-            return null
+            console.log(err)
         }
     }else{
         return null

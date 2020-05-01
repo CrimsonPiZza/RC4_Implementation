@@ -8,7 +8,7 @@ function KSA(key){
     _.range(256).forEach(i => {
 
         // Set up J
-        j = ( j + S[i] + key.charCodeAt( i % Key_Len ) ) % Key_Len
+        j = ( j + S[i] + key.charCodeAt( i % Key_Len ) ) % 256
 
         // Swap S[i] & S[j]
         let temp = S[i]

@@ -18,8 +18,8 @@ function PRG(S_Vector,n){
         S_Vector[j] = temp
 
         //Generate key stream
-        key_stream.push( S_Vector[ ( S_Vector[i] + S_Vector[j] ) % 256 ] )
-
+        let code = S_Vector[ ( S_Vector[i] + S_Vector[j] ) % 256 ]
+        key_stream = [ code,...key_stream ]
     }
 
     return key_stream

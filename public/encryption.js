@@ -12,23 +12,30 @@ function encryption(plainText,secretKey){
     const Key_Stream = PRG(KSA(secretKey),plainText.length)
 
     // Process the Plain Text
-    const processed_PlainText = []
+    let processed_PlainText = []
     _.range(plainText.length).forEach( i => {
-        processed_PlainText.push(plainText.charCodeAt(i))
+        processed_PlainText = [plainText.charCodeAt(i),...processed_PlainText]
     })
 
     // XOR PlainteText & KeyStream
-    const cipherText = []
+    let cipherText = []
     _.range(plainText.length).forEach( i => {
-        cipherText.push( processed_PlainText[i] ^ Key_Stream[i] )
+        let code = processed_PlainText[i] ^ Key_Stream[i]
+        cipherText = [code,...cipherText]
     })
 
 
     // Convert cipher to Hexa-Decimal
     let processed_CipherText = ""
     cipherText.forEach( ascii => {
-        processed_CipherText += Number(ascii).toString(16).toUpperCase() + " "
+        let hexa = Number(ascii).toString(16).toUpperCase() + " "
+        if (hexa.length == 2){
+            processed_CipherText += "0" + hexa
+        }else{
+            processed_CipherText += hexa
+        }
     })
+
 
     return processed_CipherText.trim()
 }

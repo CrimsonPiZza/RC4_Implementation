@@ -15,9 +15,10 @@ function decryption(plainText,secretKey){
     const Key_Stream = PRG(KSA(secretKey),processed_PlainText.length)
 
     // XOR PlainteText & KeyStream
-    const cipherText = []
+    let cipherText = []
     _.range(processed_PlainText.length).forEach( i => {
-        cipherText.push( processed_PlainText[i] ^ Key_Stream[i] )
+        let code = processed_PlainText[i] ^ Key_Stream[i]
+        cipherText = [code,...cipherText]
     })
 
 
@@ -26,6 +27,7 @@ function decryption(plainText,secretKey){
     cipherText.forEach( ascii => {
         processed_CipherText += String.fromCharCode(ascii)
     })
+
 
     return processed_CipherText
 }
