@@ -3,7 +3,7 @@
 ## Technologies Uses : HTML, JavaScript, CSS + Bootstrap, AWS EC2 Linux Server Instance
 
 ### |=====================================|
-### |Demo Link : http://13.59.245.222:5000|
+### |Demo Link : http://13.59.245.222:5000
 ### |=====================================|
 
 Usage : 
